@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Special One</title><style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(120deg,#ff758c,#ff7eb3,#ffd3a5);
+  overflow-x:hidden;
+  text-align:center;
+  color:white;
+}
+
+header{
+  padding:70px 20px 20px 20px;
+}
+
+h1{
+  font-size:50px;
+}
+
+.typing{
+  font-size:26px;
+  max-width:800px;
+  margin:auto;
+  min-height:120px;
+}
+
+.gallery{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  padding:30px;
+}
+
+.gallery img{
+  width:220px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  transition:transform 0.4s;
+}
+
+.gallery img:hover{
+  transform:scale(1.08);
+}
+
+button{
+  padding:15px 35px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#ff4e8a;
+  cursor:pointer;
+  margin-top:25px;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+.balloon{
+  position:absolute;
+  bottom:-150px;
+  font-size:40px;
+  animation:floatUp 10s linear infinite;
+}
+
+.balloon:nth-child(1){left:10%;animation-delay:0s}
+.balloon:nth-child(2){left:30%;animation-delay:2s}
+.balloon:nth-child(3){left:50%;animation-delay:4s}
+.balloon:nth-child(4){left:70%;animation-delay:1s}
+.balloon:nth-child(5){left:90%;animation-delay:3s}
+
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:24px;
+  animation:fall linear forwards;
+}
+
+footer{
+  margin-top:40px;
+  padding:20px;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0);opacity:1}
+  100%{transform:translateY(-120vh);opacity:0}
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh);opacity:0}
+}
+
+.confetti{
+  position:fixed;
+  width:8px;
+  height:8px;
+  background:white;
+  top:-10px;
+  animation:confettiFall linear forwards;
+}
+
+@keyframes confettiFall{
+  to{transform:translateY(110vh) rotate(720deg)}
+}
+
+</style></head><body><!-- Balloons --><div class="balloon">🎈</div>
+<div class="balloon">🎈</div>
+<div class="balloon">🎈</div>
+<div class="balloon">🎈</div>
+<div class="balloon">🎈</div><header>
+<h1>🎂 Happy Birthday My Favorite Person 🎂</h1>
+</header><div class="typing" id="typing"></div><button onclick="startSurprise()">Tap for Birthday Surprise 🎁</button>
+
+<div id="special" style="display:none;font-size:30px;margin-top:20px">
+✨ You make my world brighter every day ✨
+</div><section class="gallery">
+<img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d">
+<img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84">
+<img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3">
+<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
+</section><audio autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7c1c4e3d36.mp3" type="audio/mpeg">
+</audio><footer>
+Made with ❤️ just for you
+</footer><script>
+
+// typing effect
+const text = "Today is the birthday of the most beautiful person in my life. Your smile makes every day special and your presence makes everything brighter. I wish your life is full of happiness, success, laughter and love. Happy Birthday to someone truly amazing!";
+let i=0;
+
+function typeWriter(){
+ if(i<text.length){
+  document.getElementById("typing").innerHTML += text.charAt(i);
+  i++;
+  setTimeout(typeWriter,40);
+ }
+}
+
+typeWriter();
+
+// heart rain
+setInterval(()=>{
+ const heart=document.createElement("div");
+ heart.className="heart";
+ heart.innerHTML="❤️";
+ heart.style.left=Math.random()*100+"vw";
+ heart.style.animationDuration=(3+Math.random()*2)+"s";
+ document.body.appendChild(heart);
+ setTimeout(()=>heart.remove(),5000);
+},300);
+
+// confetti explosion
+function startSurprise(){
+ document.getElementById("special").style.display="block";
+ for(let i=0;i<120;i++){
+  const conf=document.createElement("div");
+  conf.className="confetti";
+  conf.style.left=Math.random()*100+"vw";
+  conf.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(conf);
+  setTimeout(()=>conf.remove(),6000);
+ }
+}
+
+</script></body>
+</html> 
